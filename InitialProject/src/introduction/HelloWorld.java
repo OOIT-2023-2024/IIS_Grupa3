@@ -41,6 +41,8 @@ public class HelloWorld {
 		System.out.println(stringKaoBroj+prviBroj);// int u string
 		//System.out.println((int)stringKaoBroj+prviBroj);
 		System.out.println(Integer.parseInt(stringKaoBroj)+prviBroj);
+		
+		
 	}
 
 }

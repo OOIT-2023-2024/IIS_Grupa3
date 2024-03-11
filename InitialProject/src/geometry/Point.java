@@ -5,7 +5,16 @@ public class Point {
 	//podrazumevane vrednosti: 0 0 false
 	private int x;
 	private int y;
-	private boolean selected;
+	private boolean selected;	
+	
+	public double distance(Point udaljenaTacka) {
+		//this.x je x koordinata tacke nad kojom
+		//je pozvana metoda distance u klasi Test
+		int a = this.x - udaljenaTacka.x;
+		int b = this.y - udaljenaTacka.y;
+		double distance = Math.sqrt(a*a+b*b);
+		return distance;
+	}
 	
 	//metode pristupa - PUBLIC
 	public int getX() {
@@ -18,4 +27,21 @@ public class Point {
 		this.x=x;
 		//x=x;--ne valja
 	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
+	
 }

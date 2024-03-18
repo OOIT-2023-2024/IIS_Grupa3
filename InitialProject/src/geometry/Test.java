@@ -1,3 +1,4 @@
+
 package geometry;
 
 public class Test {
@@ -69,6 +70,19 @@ public class Test {
 		line1.getEndPoint().setX((int)(line1.length() 
 				- (line1.getStartPoint().getX() +
 						line1.getStartPoint().getY())));
+		
+		//Cetvrta vezba
+		
+		Rectangle rect = new Rectangle();
+		
+		rect.setUpperLeftPoint(point2);
+		
+		rect.getUpperLeftPoint().setX(10);
+		rect.getUpperLeftPoint().setY(15);
+		
+		Point novaTacke = new Point(10,15);
+		
+		
 		
 
 		

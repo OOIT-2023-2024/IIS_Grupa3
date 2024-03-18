@@ -7,6 +7,41 @@ public class Point {
 	private int y;
 	private boolean selected;	
 	
+	public Point() {}
+	
+	public Point(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	//dozvoljava ali nam je nepotrebno
+	public Point(int x) {
+		this.x = x;
+	}
+	
+	/*ne dozvoljava
+	 * public Point(int xKoordinata, int y) {
+		this.x = xKoordinata;
+		this.y = y;
+	}*/
+	
+	/*tip parametara se razlikuje pa moze*/
+	//moze ali nije ispravno 
+	/*public Point(int xKoordinata, String y) {
+		//
+	}
+	public Point(String y, int xKoordinata) {
+		//
+	}*/
+	
+	public Point(int x, int y, boolean selected) {
+		/*this.x = x;
+		this.y = y;*/
+		//nasledjivanje konstruktora
+		this(x,y);
+		this.selected = selected;
+	}
+
 	public double distance(Point udaljenaTacka) {
 		//this.x je x koordinata tacke nad kojom
 		//je pozvana metoda distance u klasi Test

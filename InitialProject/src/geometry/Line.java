@@ -50,5 +50,10 @@ public class Line {
 	public void setSelected(boolean selected) {
 		this.selected = selected;
 	}		
+	
+	public String toString() {
+		return this.startPoint.toString()+"-->"
+					+this.endPoint;
+	}
 
 }

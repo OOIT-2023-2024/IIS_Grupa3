@@ -23,6 +23,25 @@ public class Rectangle {
 		this.selected = selected;
 	}
 	
+	public boolean equals(Object obj) {
+		if(obj instanceof Rectangle) {
+			Rectangle pomocna = (Rectangle) obj;
+			if (this.upperLeftPoint.equals(pomocna.upperLeftPoint) && this.width == pomocna.width 
+					&& this.height == pomocna.height)
+				return true;
+			else 
+				return false;
+		} else
+			return false;
+	}
+
+	public boolean contains(int x, int y) {
+		return (x >= this.upperLeftPoint.getX() 
+				&& x <= this.upperLeftPoint.getX() + width
+				&& y >= this.upperLeftPoint.getY()
+				&& y <= this.upperLeftPoint.getY() + height);
+	}
+	
 	public int area() {
 		return width*height;
 	}
@@ -54,5 +73,11 @@ public class Rectangle {
 	}
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+	}
+	
+	public String toString() {
+		return "Upper left point: " + upperLeftPoint 
+				+ ", width = " + width 
+				+ ", height = " + height;
 	}
 }

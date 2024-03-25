@@ -1,11 +1,11 @@
 package geometry;
 
 public class Line {
-	
+
 	private Point startPoint;
 	private Point endPoint;
 	private boolean selected;
-	
+
 	public Line() {
 	}
 
@@ -14,39 +14,36 @@ public class Line {
 		this.endPoint = endPoint;
 	}
 
-	public Line(Point startPoint, Point endPoint,
-			boolean selected) {
-		//this je poziv konstruktora klase Line
+	public Line(Point startPoint, Point endPoint, boolean selected) {
+		// this je poziv konstruktora klase Line
 		this(startPoint, endPoint);
 		this.selected = selected;
 	}
-	
+
 	public double length() {
 		return startPoint.distance(endPoint);
 	}
-	
+
 	public boolean equals(Object obj) {
 		if (obj instanceof Line) {
 			Line pomocna = (Line) obj;
-			if (this.startPoint.equals(pomocna.startPoint) && this.endPoint.equals(pomocna.endPoint))
+			if (this.startPoint.equals(pomocna.startPoint) && this.endPoint.equals(pomocna.endPoint)
+					&& this.selected == pomocna.selected)
 				return true;
-			else 
-				return false;
-		} else 
-			return false;
+		}
+		return false;
 	}
 
 	public boolean contains(int x, int y) {
-		Point sadrziTacku = new Point(x,y);
+		Point sadrziTacku = new Point(x, y);
 		return this.startPoint.distance(sadrziTacku) + this.endPoint.distance(sadrziTacku) - length() <= 2;
 	}
-	
-	
+
 	public Point getStartPoint() {
-		//vraca objekat klase Point odnosno pocetnu tacku linije
+		// vraca objekat klase Point odnosno pocetnu tacku linije
 		return this.startPoint;
 	}
-	
+
 	public void setStartPoint(Point startPoint) {
 		this.startPoint = startPoint;
 	}
@@ -65,11 +62,10 @@ public class Line {
 
 	public void setSelected(boolean selected) {
 		this.selected = selected;
-	}		
-	
+	}
+
 	public String toString() {
-		return this.startPoint.toString()+"-->"
-					+this.endPoint;
+		return this.startPoint.toString() + "-->" + this.endPoint;
 	}
 
 }

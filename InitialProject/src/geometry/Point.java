@@ -65,8 +65,8 @@ public class Point {
 	}
 	
 	public boolean contains(int x, int y) {
-		Point sadrziTacku = new Point(x,y);
-		return this.distance(sadrziTacku) <= 2;
+		Point tackaKlika = new Point(x,y);
+		return this.distance(tackaKlika) <= 2;
 	}
 	
 	

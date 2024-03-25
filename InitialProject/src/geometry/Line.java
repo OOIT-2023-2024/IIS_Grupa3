@@ -35,8 +35,10 @@ public class Line {
 	}
 
 	public boolean contains(int x, int y) {
-		Point sadrziTacku = new Point(x, y);
-		return this.startPoint.distance(sadrziTacku) + this.endPoint.distance(sadrziTacku) - length() <= 2;
+		Point tackaKlika = new Point(x, y);
+		return this.startPoint.distance(tackaKlika)
+				+ this.endPoint.distance(tackaKlika)
+				- length() <= 2;
 	}
 
 	public Point getStartPoint() {

@@ -32,8 +32,18 @@ public class Rectangle {
 	}
 
 	public boolean contains(int x, int y) {
-		return (x >= this.upperLeftPoint.getX() && x <= this.upperLeftPoint.getX() + width
-				&& y >= this.upperLeftPoint.getY() && y <= this.upperLeftPoint.getY() + height);
+		return (x >= this.upperLeftPoint.getX()
+				&& x <= this.upperLeftPoint.getX() + width
+				&& y >= this.upperLeftPoint.getY() 
+				&& y <= this.upperLeftPoint.getY() + height);
+	}
+	
+	//overloading moze i nad metodama koje nisu konstruktori
+	public boolean contains(Point tackaKlika) {
+		return (tackaKlika.getX() >= this.upperLeftPoint.getX()
+				&& tackaKlika.getX() <= this.upperLeftPoint.getX() + width
+				&& tackaKlika.getY() >= this.upperLeftPoint.getY() 
+				&& tackaKlika.getY() <= this.upperLeftPoint.getY() + height);
 	}
 
 	public int area() {
@@ -77,6 +87,8 @@ public class Rectangle {
 	}
 
 	public String toString() {
-		return "Upper left point: " + upperLeftPoint + ", width = " + width + ", height = " + height;
+		return "Upper left point: " + upperLeftPoint 
+				+ ", width = " + width 
+				+ ", height = " + height;
 	}
 }

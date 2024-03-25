@@ -97,6 +97,16 @@ public class Test {
 		//u klasi Object
 		System.out.println(novaTacka.equals(novaTacka2));
 		System.out.println(novaTacka.equals(line1));
+		
+		//Pete vezbe
+		Donut donut1 = new Donut(novaTacka, 50, 45);
+		//promenim radius
+		donut1.setRadius(60);
+		System.out.println(donut1);
+		
+		Circle donut2 = new Donut(50);
+		System.out.println(donut2);
+		((Donut)donut2).setInnerRadius(60);
 
 	}
 

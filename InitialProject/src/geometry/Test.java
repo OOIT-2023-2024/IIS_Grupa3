@@ -107,6 +107,12 @@ public class Test {
 		Circle donut2 = new Donut(50);
 		System.out.println(donut2);
 		((Donut)donut2).setInnerRadius(60);
+		
+		//apstraktna klasa
+		//Shape shape1 = new Shape(); --ovo nije moguce
+		Shape shape1 = new Point(50,60);
+		System.out.println(shape1.isSelected());
+		System.out.println(((Point)shape1).getX());
 
 	}
 

@@ -92,7 +92,8 @@ public class Point extends Shape {
 		if(o instanceof Point) {
 			Point shapeToCompare = (Point)o;
 			return (int)this.distance(new Point(0,0))
-					- (int)shapeToCompare.distance(new Point(0,0));
+					- (int)shapeToCompare.distance
+					(new Point(0,0));
 		}
 		return 0;
 	}

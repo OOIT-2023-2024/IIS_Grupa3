@@ -103,7 +103,7 @@ public class Test {
 		//Pete vezbe
 		Donut donut1 = new Donut(novaTacka, 50, 45);
 		//promenim radius
-		donut1.setRadius(60);
+		//donut1.setRadius(60);
 		System.out.println(donut1);
 		
 		Circle donut2 = new Donut(50);

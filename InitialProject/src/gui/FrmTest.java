@@ -40,6 +40,8 @@ public class FrmTest extends JFrame {
 	private JLabel lblNaslov;
 	private JPanel pnlSouth;
 	private JButton btnKlik;
+	private JButton btnDodajBoju;
+	private JButton btnIzmeniBoju;
 	/**
 	 * Launch the application.
 	 */
@@ -142,6 +144,48 @@ public class FrmTest extends JFrame {
 				dlm.addElement(lblZutaBoja.getText());
 			}
 		});
+		
+		btnIzmeniBoju = new JButton("Izmeni boju");
+		btnIzmeniBoju.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int indexOfSelectedElement = lstBoje.getSelectedIndex();
+				System.out.print(indexOfSelectedElement);
+				if(indexOfSelectedElement < 0) {
+					JOptionPane.showMessageDialog(null, "Mora se selektovati element iz liste",
+							"Poruka", JOptionPane.ERROR_MESSAGE);
+				}else {
+					String selectedElement = 
+							dlm.getElementAt(indexOfSelectedElement);
+					String[] rgbColors = selectedElement.split(" ");
+					
+					DlgTest dlgIzmene = new DlgTest();
+					//prvo popunjavanje pa setVisible(true)!!!
+					dlgIzmene.getTextFieldRed().setText(rgbColors[0]);
+					dlgIzmene.getTextFieldGreen().setText(rgbColors[1]);
+					dlgIzmene.getTextFieldBlue().setText(rgbColors[2]);
+					dlgIzmene.setVisible(true);
+					
+					if(dlgIzmene.isOk()) {
+						String red=dlgIzmene.getTextFieldRed().getText();
+						String green=dlgIzmene.getTextFieldGreen().getText();
+						String blue=dlgIzmene.getTextFieldBlue().getText();
+								
+						String stringColor = red+" "+green+" "+blue;
+						dlm.setElementAt(stringColor, indexOfSelectedElement);
+						
+						Color color = new Color(Integer.parseInt(red),
+								Integer.parseInt(green), 
+								Integer.parseInt(blue));
+						pnlCenter.setBackground(color);
+					}
+				}
+			}
+		});
+		GridBagConstraints gbc_btnIzmeniBoju = new GridBagConstraints();
+		gbc_btnIzmeniBoju.insets = new Insets(0, 0, 5, 0);
+		gbc_btnIzmeniBoju.gridx = 2;
+		gbc_btnIzmeniBoju.gridy = 1;
+		pnlCenter.add(btnIzmeniBoju, gbc_btnIzmeniBoju);
 		buttonGroupBoja.add(tglbtnZutaBoja);
 		GridBagConstraints gbc_tglbtnZutaBoja = new GridBagConstraints();
 		gbc_tglbtnZutaBoja.insets = new Insets(0, 0, 5, 5);
@@ -157,6 +201,35 @@ public class FrmTest extends JFrame {
 		gbc_lblZutaBoja.gridx = 1;
 		gbc_lblZutaBoja.gridy = 2;
 		pnlCenter.add(lblZutaBoja, gbc_lblZutaBoja);
+		
+		btnDodajBoju = new JButton("Dodaj boju");
+		btnDodajBoju.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DlgTest dlgTest = new DlgTest();
+				dlgTest.setVisible(true);
+				
+				//testiranje modalnosti
+				System.out.print("Proba");
+				if(dlgTest.isOk()) {
+					String red=dlgTest.getTextFieldRed().getText();
+					String green=dlgTest.getTextFieldGreen().getText();
+					String blue=dlgTest.getTextFieldBlue().getText();
+					
+					String stringColor = red+" "+green+" "+blue;
+					dlm.addElement(stringColor);
+					
+					Color color = new Color(Integer.parseInt(red),
+							Integer.parseInt(green), 
+							Integer.parseInt(blue));
+					pnlCenter.setBackground(color);
+				}
+			}
+		});
+		GridBagConstraints gbc_btnDodajBoju = new GridBagConstraints();
+		gbc_btnDodajBoju.insets = new Insets(0, 0, 5, 0);
+		gbc_btnDodajBoju.gridx = 2;
+		gbc_btnDodajBoju.gridy = 2;
+		pnlCenter.add(btnDodajBoju, gbc_btnDodajBoju);
 		
 		scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();

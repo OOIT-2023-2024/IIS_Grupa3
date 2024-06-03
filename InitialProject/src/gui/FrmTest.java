@@ -23,6 +23,11 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class FrmTest extends JFrame {
 
@@ -42,6 +47,9 @@ public class FrmTest extends JFrame {
 	private JButton btnKlik;
 	private JButton btnDodajBoju;
 	private JButton btnIzmeniBoju;
+	private JLabel lblDodatneBoje;
+	private JComboBox<String> comboBoxBoje;
+	private JTextField textFieldDodatnaBoja;
 	/**
 	 * Launch the application.
 	 */
@@ -76,7 +84,7 @@ public class FrmTest extends JFrame {
 		GridBagLayout gbl_pnlCenter = new GridBagLayout();
 		gbl_pnlCenter.columnWidths = new int[]{0, 0, 0, 0};
 		gbl_pnlCenter.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gbl_pnlCenter.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_pnlCenter.columnWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_pnlCenter.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		pnlCenter.setLayout(gbl_pnlCenter);
 		
@@ -117,6 +125,25 @@ public class FrmTest extends JFrame {
 				dlm.addElement(lblPlavaBoja.getText());
 			}
 		});
+		
+		textFieldDodatnaBoja = new JTextField();
+		textFieldDodatnaBoja.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					dlm.addElement(textFieldDodatnaBoja.getText());
+					textFieldDodatnaBoja.setText("");
+				}
+			}
+		});
+		GridBagConstraints gbc_textFieldDodatnaBoja = new GridBagConstraints();
+		gbc_textFieldDodatnaBoja.insets = new Insets(0, 0, 5, 0);
+		gbc_textFieldDodatnaBoja.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldDodatnaBoja.gridx = 2;
+		gbc_textFieldDodatnaBoja.gridy = 0;
+		pnlCenter.add(textFieldDodatnaBoja, gbc_textFieldDodatnaBoja);
+		textFieldDodatnaBoja.setColumns(10);
 		buttonGroupBoja.add(tglbtnPlavaBoja);
 		GridBagConstraints gbc_tglbtnPlavaBoja = new GridBagConstraints();
 		gbc_tglbtnPlavaBoja.fill = GridBagConstraints.HORIZONTAL;
@@ -230,6 +257,42 @@ public class FrmTest extends JFrame {
 		gbc_btnDodajBoju.gridx = 2;
 		gbc_btnDodajBoju.gridy = 2;
 		pnlCenter.add(btnDodajBoju, gbc_btnDodajBoju);
+		
+		lblDodatneBoje = new JLabel("Dodatne boje");
+		GridBagConstraints gbc_lblDodatneBoje = new GridBagConstraints();
+		gbc_lblDodatneBoje.anchor = GridBagConstraints.EAST;
+		gbc_lblDodatneBoje.insets = new Insets(0, 0, 0, 5);
+		gbc_lblDodatneBoje.gridx = 0;
+		gbc_lblDodatneBoje.gridy = 3;
+		pnlCenter.add(lblDodatneBoje, gbc_lblDodatneBoje);
+		
+		comboBoxBoje = new JComboBox<String>();
+		comboBoxBoje.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String choosenColor = comboBoxBoje.getSelectedItem().toString();
+				dlm.addElement(choosenColor);
+				switch (choosenColor) {
+				case "Zelena":
+					lblDodatneBoje.setForeground(Color.green);
+					break;
+				case "Ljubicasta":
+					lblDodatneBoje.setForeground(Color.magenta);
+					break;
+				case "Narandzasta":
+					lblDodatneBoje.setForeground(Color.orange);
+					break;
+				default:
+					break;
+				}
+			}
+		});
+		comboBoxBoje.setModel(new DefaultComboBoxModel<String>(new String[] {"Ljubicasta", "Zelena", "Narandzasta"}));
+		GridBagConstraints gbc_comboBoxBoje = new GridBagConstraints();
+		gbc_comboBoxBoje.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBoxBoje.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxBoje.gridx = 1;
+		gbc_comboBoxBoje.gridy = 3;
+		pnlCenter.add(comboBoxBoje, gbc_comboBoxBoje);
 		
 		scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();

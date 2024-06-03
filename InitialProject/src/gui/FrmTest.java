@@ -21,6 +21,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
@@ -325,6 +327,16 @@ public class FrmTest extends JFrame {
 			}
 		});
 		pnlSouth.add(btnKlik);
+		
+		JButton btnBojaPozadine = new JButton("Boja pozadine");
+		btnBojaPozadine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Color backColor = JColorChooser.showDialog(null, "Choose background color",Color.black);
+				if (backColor != null)
+					pnlCenter.setBackground(backColor);
+			}
+		});
+		pnlSouth.add(btnBojaPozadine);
 	}
 
 }
